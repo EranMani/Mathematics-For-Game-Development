@@ -9,6 +9,10 @@ TagManager:
   - FLY
   - INTELLIGENCE
   - INVISIBLE
+  - ANTIMAGIC
+  - MULTADD
+  - MULTREMOVE
+  - RESET
   layers:
   - Default
   - TransparentFX

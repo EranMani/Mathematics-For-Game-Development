@@ -37,6 +37,22 @@ public class AttributeManager : MonoBehaviour
         {
             attributes |= INVISIBLE;
         }
+        else if (other.gameObject.tag == "ANTIMAGIC")
+        {
+            attributes &= ~MAGIC;
+        }
+        else if (other.gameObject.tag == "MULTADD")
+        {
+            attributes |= (INTELLIGENCE | MAGIC | CHARISMA);
+        }
+        else if (other.gameObject.tag == "MULTREMOVE")
+        {
+            attributes &= ~(INTELLIGENCE | MAGIC);
+        }
+        else if (other.gameObject.tag == "RESET")
+        {
+            attributes = 0;
+        }
     }
 
     // Start is called before the first frame update
