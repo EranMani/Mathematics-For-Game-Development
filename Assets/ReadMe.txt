@@ -110,8 +110,49 @@ feature/Bitwise_Operations
 				  
 				  By using & we can check for both one's in the binaries and if we have it, then the result should not be zero
 				  if ((attributes & MAGIC) != 0){do something}
-				
-		  
+
+* Bit shifting - An operation performed on all the bits in a binary sequence. The shift moves all by the requested number of places in either the left or right direction.
+				 Example:
+					00011 <- left shift = (all numbers are shuffled to the left and a zero is placed on the end) 00110
+					00011 -> right shift = (moves the bits in the other direction) 00001
+					
+				* A left shift is performed using two less than signs - 00011 << 1 = 00110
+																		00011 << 3 = 11000
+				* To perform a right shift we use two greater then signs - 00001 >> 1 = 00000
+																		   10011 >> 3 = 00010
+																		   
+				* We can use the shifting for multitude of things:
+					* you can set your flags rather than having to remember the binary sequence of pairs of two.
+					* Example:
+						static public int MAGIC = 1 << 5; --> 00010000
+						static public int INTELLIGENCE = 1 << 4; -> 00001000
+						static public int CHARISMA = 1 << 3; -> 00000100
+						static public int FLY = 1 << 2; -> 00000010
+						static public int INVISIBLE = 1; -> 00000001
+					* Shifting is particularly useful for packing and unpacking since we can condense a multitude of values into a single integer, such as the character attributes.
+					  It makes sense to also do this with networking applications. This allows for packing several pieces of data into less memory, making it quicker to transport over network.
+					  Example:
+						A = 1001111
+						B = 10110
+						C = 0011
+						Unpack A,B,C into X variable by this order
+						So...
+						A << 9 - left shift with jumps of 9 will return - 1001111000000000
+						X |= A (bitwise OR to add A into X)
+						B << 4 - left shift with jumps of 4 will return - 0000000101100000
+						X |= B
+						Finally -> X |= C (does'nt need shifting since its the last binary to add)
+						X = 0000000000000000 (16 bits)
+					* When unpacking a binary, before we need to record or remember all of the lengths of each individual sequence.
+					  To make it work we create a mask that will get all of the bits for each value.
+					  Example:
+						X = 0011001|11000|0101
+						To get the A sequence we will create a mask of one's (1111111000000000) and use the bitwise operator
+						AND to clear all the unnecessary one's
+						Mask = 1111111|00000|0000
+						X & MASK = 0011001|11000|0101
+						Then we need to shift to the right so -- A = (X & MaskA) >> 9
+						
 
 		  
 
