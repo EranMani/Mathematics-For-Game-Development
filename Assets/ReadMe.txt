@@ -98,6 +98,19 @@ feature/Bitwise_Operations
 		01111
 		-----
 		01100
+* Bit masking - A mask defines which bits you want to keep, and which bits you want to clear.
+                Masking is the act of applying a mask to a value. In this case, we're working with ones and zeros.
+				For example, we have an attribute string and then we have a particular mask that we want to match.
+				* attributes -> 0011001
+				  magic -> 0010000 (a mask that will contain the binary for MAGIC attribute to match)
+				  
+				  00-1-1001
+				  -------  -> Use & operator to check if result is 0 or not. (NOTE) & operator will result in 1 only if both bits are 1
+				  00-1-0000
+				  
+				  By using & we can check for both one's in the binaries and if we have it, then the result should not be zero
+				  if ((attributes & MAGIC) != 0){do something}
+				
 		  
 
 		  
