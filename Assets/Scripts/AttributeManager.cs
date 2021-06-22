@@ -19,25 +19,31 @@ public class AttributeManager : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
+            // Using XOR instead of OR
             case "MAGIC":
-                keys |= MAGIC_KEY;
-                Destroy(other.gameObject);
+                //keys |= MAGIC_KEY;
+                keys ^= MAGIC_KEY;
+                //Destroy(other.gameObject);
                 break;
             case "INTELLIGENCE":
-                keys |= INTELLIGENCE_KEY;
-                Destroy(other.gameObject);
+                //keys |= INTELLIGENCE_KEY;
+                keys ^= INTELLIGENCE_KEY;
+                //Destroy(other.gameObject);
                 break;
             case "CHARISMA":
-                keys |= CHARISMA_KEY;
-                Destroy(other.gameObject);
+                //keys |= CHARISMA_KEY;
+                keys ^= CHARISMA_KEY;
+                //Destroy(other.gameObject);
                 break;
             case "FLY":
-                keys |= FLY_KEY;
-                Destroy(other.gameObject);
+                //keys |= FLY_KEY;
+                keys ^= FLY_KEY;
+                //Destroy(other.gameObject);
                 break;
             case "INVISIBLE":
-                keys |= INVISIBLE_KEY;
-                Destroy(other.gameObject);
+                //keys |= INVISIBLE_KEY;
+                keys ^= INVISIBLE_KEY;
+                //Destroy(other.gameObject);
                 break;
             case "GOLD":
                 keys |= (MAGIC_KEY | INTELLIGENCE_KEY | CHARISMA_KEY | FLY_KEY | INVISIBLE_KEY);

@@ -153,8 +153,22 @@ feature/Bitwise_Operations
 						X & MASK = 0011001|11000|0101
 						Then we need to shift to the right so -- A = (X & MaskA) >> 9
 						
-
-		  
+* Bit toggling - To do that we can use the XOR (^) bitwise operator. It will look at all things together and as long
+                 as only one of them is true, you get a true. If both of them are true, you get a false. If both of them
+				 are false then you get false.
+				 Example:
+					attributes = 00010010
+					magic =      00010000
+					fly =        00000010
+					
+					attributes ^= magic
+					attributes = 00000010
+					
+					attributes ^= fly
+					attributes = 00000000
+					
+					attributes ^= magic
+					attributes = 00010000
 
 
 
