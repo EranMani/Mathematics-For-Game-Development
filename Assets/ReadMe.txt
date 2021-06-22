@@ -169,6 +169,10 @@ feature/Bitwise_Operations
 					
 					attributes ^= magic
 					attributes = 00010000
+					
+* Unity specifics - Unity uses bit sequences to store some of its data in the API. One can be found in raycasting.	
+					Bit sequence can be used as mask for the layers when using raycasting. We can perform bitwise operations
+					on them and then use or disclose them from any particular raycast.
 
 
 
