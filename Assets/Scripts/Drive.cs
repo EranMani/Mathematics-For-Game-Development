@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 // A very simplistic car driving on the x-z plane.
 
@@ -7,9 +8,18 @@ public class Drive : MonoBehaviour
 {
     public float speed = 10.0f;
     public float rotationSpeed = 100.0f;
+    public Text energyAmount;
+    public Vector3 currentLocation;
+
+    private void Start()
+    {
+        currentLocation = transform.position;
+    }
 
     void Update()
     {
+        if (float.Parse(energyAmount.text) <= 0) return;
+
         // Get the horizontal and vertical axis.
         // By default they are mapped to the arrow keys.
         // The value is in the range -1 to 1
@@ -25,5 +35,11 @@ public class Drive : MonoBehaviour
 
         // Rotate around our y-axis
         transform.Rotate(0, 0, -rotation);
+
+        // Remove distance units from the energy amount
+        // Current location and transform.position should be different if the player is moving
+        energyAmount.text = (float.Parse(energyAmount.text) - Vector3.Distance(currentLocation, transform.position)) + "";
+        // Store new location as current to update the distance correctly by movement of the player calculated each frame
+        currentLocation = transform.position;
     }
 }
