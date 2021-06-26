@@ -17,3 +17,18 @@ feature/Vectors
 	vector (4,5) 
 	destination point = (3+4) + (4+5) = (7,9)
 * We can determine if two vectors are the same by their direction and length
+* Vector/Point addition and subtraction - we can add or subtract a vector from a point by using the operators + & -
+  [px, py] + [vx, vy] = [px + vx, py + vy]
+  [px, py] - [vx, vy] = [px - vx, py - vy]
+  [vx, vy] * s = [vx * s, vy * s]
+  Example:
+	// Move object along positive axis
+	transform.position += new Vector3(0,1,0);
+  By multiplying a value with our vector, we can make the vector longer or shorter, and this will affect the movement speed of the object,
+  because the length of this vector is what we are adding to the position of the object itself. The vector still pointing to the same direction,
+  it just got a larger magnitude
+  Multiply the vector by -1 will flip the direction by 180 degrees but the magnitude will stay the same
+  Example:
+	// Move object along positive axis and change its magnitude
+	transform.position += new Vector3(0,1,0) * speed;
+  
