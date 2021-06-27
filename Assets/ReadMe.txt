@@ -19,4 +19,22 @@
 	point at the frame, even if one object is farther away. 
 	To make the speed of both objects to be exactly the same, which means that the closer object will get to the destination before the furtherest tank,
 	we will use the vector NORMAL form
+* Vector normal form - The normal form reduces all vectors down to a length of one. So every normal form of a vector still points 
+  in the same direction as the original vector, but it has a length of one. Therefore, all the reduced vectors are going to be exactly the same length,
+  which makes it useful when we want to start multiplying them by speed variables.
+  * calculation of normal requires knowing the vector's direction and magnitude. The way to reduce a vector down to a length of 1 is to divide
+  each coordinate element by its magnitude. The formula will look like this:
+	^
+	v = ( vx      vy
+		----- , -----
+		||v||   ||v||)
+		
+	v^ = the mathmeatical notation of the normal form of a vector
+	Example:
+		* vector = (3,4)
+		                       __________    __________    ___
+		  magnitude = ||v|| = √ x^2 + y^2 = √ 3^2 + 4^2 = √ 25 = 5
+		  v^ = (3/5, 4/5) = (0.6, 0.8) -> This is the coordinate when the magnitude of the vector is 1
+
+
 	
