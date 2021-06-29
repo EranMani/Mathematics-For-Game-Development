@@ -14,6 +14,7 @@ public class ObjectManager : MonoBehaviour {
                                                     objPrefab.transform.position.z), 
                                      Quaternion.identity);
         //Debug.Log("Fuel Location: " + obj.transform.position);
+        obj.name = "fuel";
         objPosition = obj.transform.position;
     }
 	

@@ -29,6 +29,7 @@ public class HolisticMath
         return value * value;
     }
 
+
     static public float Dot(Coords vector1, Coords vector2)
     {
         return vector1.x * vector2.x + vector1.y * vector2.y + vector1.z * vector2.z;
