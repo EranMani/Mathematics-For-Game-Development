@@ -34,3 +34,20 @@
   Based on the direction of the Z axis in the environment, that dictates the way that rotations are going to occur. Unity is using the left coordinate
   system which means the positive rotations are going to go anti clockwise.
   
+* Cross product - The cross product of two vectors results in another vector. It is performed on vectors in three dimensions, but in 2D it is
+				  relevant to determine which way to turn to face one object towards another. In 2D, it has a third dimension that is coming out of the
+				  screen.
+				  Given the two vectors W and Y, the cross product is defind like this:
+					* v = (v.x, v.y, v.z)
+					  w = (w.x, w.y, w.z)
+					  vxw = (v.y * w.z - v.z * w.y, v.z * w.x - v.x * w.z, v.x * w.y - v.y * w.x)
+					  * It is called a cross product as it multiplies each component of the vectors with every other component.
+						The resulting vector is one that is perpendicular to the other two.
+				  * The cross product is not reversible.
+				  * In determining whether we do an anticlockwise or a clockwise turn, the clue is in the results of the cross product.
+				    In the case where we want to turn clockwise, the Z coordinate is a negative value ->  (v x w).z < 0 = clockwise turn
+				    In the case where we want to turn anticlockwise, the Z value is a positive value -> (v x w).z > 0 = anticlockwise turn
+				  * In case of turning clockwise, we turn anticlockwise all the way around in a circle until we get to the same position
+				    we'd be facing if we had done a clockwise turn with the given angle.
+					To calculate that turn, it's going to be the entire degrees in a circle, which is 360 minus the given angle.
+					angle = 2PI - angle

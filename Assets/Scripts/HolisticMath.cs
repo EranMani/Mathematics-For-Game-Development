@@ -42,10 +42,27 @@ public class HolisticMath
         return Mathf.Acos(dotDivide); // current result is in radians. For degrees * 180/Mathf.PI;
     }
 
-    static public Coords Rotate(Coords vector, float angle) // In radians
+    static public Coords Rotate(Coords vector, float angle, bool turnClockwise) // In radians
     {
+        if (turnClockwise)
+        {
+            angle = 2 * Mathf.PI - angle;
+
+        }
         float xVal = vector.x * Mathf.Cos(angle) - vector.y * Mathf.Sin(angle);
         float yVal = vector.x * Mathf.Sin(angle) + vector.y * Mathf.Cos(angle);
         return new Coords(xVal, yVal, 0);
+    }
+
+    static public Coords Cross(Coords vector1, Coords vector2)
+    {
+        // Big note: the first input vector should be the direction the object is currently facing,
+        // and the second input vector should be the direction that the object wants to be facing to
+
+        // Note: the X value of the cross vector depends on the Y and Z axis
+        float xCross = vector1.y * vector2.z - vector1.z * vector2.y;
+        float yCross = vector1.z * vector2.x - vector1.x * vector2.z;
+        float zCross = vector1.x * vector2.y - vector1.y * vector2.x;
+        return new Coords(xCross, yCross, zCross);
     }
 }

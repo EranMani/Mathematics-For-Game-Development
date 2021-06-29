@@ -15,8 +15,16 @@ public class Drive : MonoBehaviour
         Coords dirNormal = HolisticMath.GetNormal(new Coords(direction));
         direction = dirNormal.ToVector();
         // vector (0,1,0) is the up vector. Check by gizmos
-        float angle = HolisticMath.Angle(new Coords(0, 1, 0), new Coords(direction)); // Stay in radians
-        Coords newDir = HolisticMath.Rotate(new Coords(0, 1, 0), angle);
+        float angle = HolisticMath.Angle(new Coords(transform.up), new Coords(direction)); // Stay in radians
+        // In 2D, the transform.up is the green axis(Y), and transform.right is the red axis(X) and transform.forward
+        // is the blue axis(Z)
+        bool turnClockwise = false;
+        if (HolisticMath.Cross(new Coords(transform.up), dirNormal).z < 0)
+        {
+            turnClockwise = true;
+        }
+
+        Coords newDir = HolisticMath.Rotate(new Coords(transform.up), angle, turnClockwise);
         transform.up = newDir.ToVector();
     }
 
