@@ -15,7 +15,9 @@ public class Drive : MonoBehaviour
         Coords dirNormal = HolisticMath.GetNormal(new Coords(direction));
         direction = dirNormal.ToVector();
         // vector (0,1,0) is the up vector. Check by gizmos
-        float angle = HolisticMath.Angle(new Coords(0, 1, 0), new Coords(direction)) * 180.0f/Mathf.PI;
+        float angle = HolisticMath.Angle(new Coords(0, 1, 0), new Coords(direction)); // Stay in radians
+        Coords newDir = HolisticMath.Rotate(new Coords(0, 1, 0), angle);
+        transform.up = newDir.ToVector();
     }
 
     void Update()

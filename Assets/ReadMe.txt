@@ -24,5 +24,13 @@
 		  direction of the fuel
 	* Some kind of camera that wants to detect whether the character has walked into a certain space
 
-
+* Rotations - To rotate a vector about an angle, the X and Y components need to be manipulated with sine and cosine functions
+              The equation will look like this:
+				* v.x = x * cos(angle) - y * sin(angle)
+				  v.y = x * sin(angle) + y * cos(angle)
+				  
+				  v = (x * cos(angle) - y * sin(angle), x * sin(angle) + y * cos(angle))
+* In computer graphics there are two types of coordinate system. There is a right hand coordinate system and a left hand coordinate system.
+  Based on the direction of the Z axis in the environment, that dictates the way that rotations are going to occur. Unity is using the left coordinate
+  system which means the positive rotations are going to go anti clockwise.
   
