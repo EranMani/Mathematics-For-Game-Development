@@ -65,4 +65,21 @@ public class HolisticMath
         float zCross = vector1.x * vector2.y - vector1.y * vector2.x;
         return new Coords(xCross, yCross, zCross);
     }
+
+    static public Coords LookAt2D(Coords destination, Coords forwardVector, Coords position)
+    {
+        // Declare the vector direction from the object to the destination
+        Coords direction = new Coords(destination.x - position.x, destination.y - position.y, position.z);
+  
+        float angle = Angle(forwardVector, direction); // Stay in radians
+
+        bool turnClockwise = false;
+        if (HolisticMath.Cross(forwardVector, direction).z < 0)
+        {
+            turnClockwise = true;
+        }
+
+        Coords newDir = Rotate(forwardVector, angle, turnClockwise);
+        return newDir;
+    }
 }

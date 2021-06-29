@@ -10,22 +10,14 @@ public class Drive : MonoBehaviour
 
     private void Start()
     {
-        // Declare the vector direction from the object to the destination
         direction = fuel.transform.position - transform.position;
         Coords dirNormal = HolisticMath.GetNormal(new Coords(direction));
         direction = dirNormal.ToVector();
-        // vector (0,1,0) is the up vector. Check by gizmos
-        float angle = HolisticMath.Angle(new Coords(transform.up), new Coords(direction)); // Stay in radians
-        // In 2D, the transform.up is the green axis(Y), and transform.right is the red axis(X) and transform.forward
-        // is the blue axis(Z)
-        bool turnClockwise = false;
-        if (HolisticMath.Cross(new Coords(transform.up), dirNormal).z < 0)
-        {
-            turnClockwise = true;
-        }
 
-        Coords newDir = HolisticMath.Rotate(new Coords(transform.up), angle, turnClockwise);
-        transform.up = newDir.ToVector();
+        // transform.up shows the forward direction value (green arrow) of the 2D object according to where its facing
+        transform.up = HolisticMath.LookAt2D(new Coords(fuel.transform.position), 
+                                             new Coords(transform.up), 
+                                             new Coords(transform.position)).ToVector();
     }
 
     void Update()
