@@ -806,7 +806,6 @@ MonoBehaviour:
   tankPosition: {fileID: 923748017}
   fuelPosition: {fileID: 1402376379}
   energyAmt: {fileID: 2061089507}
-  angleAmt: {fileID: 0}
 --- !u!4 &933802741
 Transform:
   m_ObjectHideFlags: 0
@@ -1482,7 +1481,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 933802740}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: AddAngle
+        m_MethodName: SetAngle
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1737,7 +1736,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574540917}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92.85004, y: 332, z: 0}
+  m_LocalPosition: {x: -13, y: 17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
