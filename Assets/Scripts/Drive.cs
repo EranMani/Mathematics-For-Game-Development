@@ -15,8 +15,13 @@ public class Drive : MonoBehaviour
         translation *= Time.deltaTime;
         rotation *= Time.deltaTime;
 
-        transform.Translate(0, translation, 0);
+        //transform.Translate(0, translation, 0);
+        transform.position = HolisticMath.Translate(new Coords(transform.position), new Coords(transform.up),
+                                                    new Coords(0, translation, 0)).ToVector();
 
-        transform.Rotate(0, 0, -rotation);
+        //transform.Rotate(0, 0, -rotation);
+        // Unity rotate function recieves degrees not radians
+        // In our Rotate method, we deliver angles as radians and not degrees
+        transform.up = HolisticMath.Rotate(new Coords(transform.up), rotation * Mathf.Deg2Rad, true).ToVector();
     }
 }

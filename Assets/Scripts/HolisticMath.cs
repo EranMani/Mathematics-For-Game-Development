@@ -65,6 +65,39 @@ public class HolisticMath
         return new Coords(xVal, yVal, 0);
     }
 
+    static public Coords Translate(Coords position, Coords facing, Coords vector)
+    {
+        // Map coordinate system from the world into a local coordinate system space
+
+        // Move object in its own coordinate system, not the world coordinate system
+        // In case the object is not moving, return the same position to avoid vector length of zero which will cause
+        // console errors
+        if (Distance(new Coords(0,0,0), vector) <= 0) { return position; }
+
+        // Update the angle of the addition vector towards the facing vector (transform.up as forward) 
+        // This will update the object forward position locally and avoid using forward position of world space (up and down only)
+        float angle = Angle(vector , facing);
+
+        // Once we turned into the local space, we want to apply the same rotation that it had back in its world space before
+        // If we are going straight ahead we will get a world angle of 0, and if we are going backwards then 180 degrees of world angle
+        float worldAngle = Angle(vector, new Coords(0, 1, 0));
+        bool clockwise = false;
+        if (Cross(vector, facing).z < 0)
+        {
+            clockwise = true;
+        }
+
+        // We are rotating the world angle into the local space angle of the tank an then reapplying the angle that it
+        // already had before we rotated it off of its reference point in the world
+        vector = Rotate(vector, angle + worldAngle, clockwise);
+        
+        float xVal = position.x + vector.x;
+        float yVal = position.y + vector.y;
+        float zVal = position.z + vector.z;
+        return new Coords(xVal, yVal, zVal);
+
+    }
+
     static public Coords Cross(Coords vector1, Coords vector2)
     {
         float xMult = vector1.y * vector2.z - vector1.z * vector2.y;
