@@ -40,6 +40,12 @@ public class Coords
         return new Vector3(x, y, z);
     }
 
+    static public Coords operator +(Coords a, Coords b)
+    {
+        Coords c = new Coords(a.x + b.x, a.y + b.y, a.z + b.z);
+        return c;
+    }
+
     static public void DrawLine(Coords startPoint, Coords endPoint, float width, Color colour)
     {
         GameObject line = new GameObject("Line_" + startPoint.ToString() + "_" + endPoint.ToString());
