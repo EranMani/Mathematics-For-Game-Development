@@ -12,3 +12,16 @@
 		* Adding a vector to a point - only add the Z axis element to the calculation.
 		  p2 = p1 + v
 		  v = p2 - p1
+
+* When doing rotations in 3D, there are three axis of rotation - 
+	* Pitch - rotation around the X axis
+	  Yaw - rotation around the Y axis
+	  Roll - rotation around the Z axis
+	When a 3D object is rotated, it can be described by eular angles. The eular angles are the three angles of rotation on the object around the
+	X, Y and Z axis. Each one of these individual rotations provides us with an eular angle for each one.
+	Eular angles can be represented like a vector in a tuple of three values with all three rotations in the X, Y, and Z order. For example, a 
+	45 degrees rotation for each axis will look like this - 
+		X - (45, 0, 0)
+		Y - (0, 45, 0)
+		Z - (0, 0, 45)
+	45 degrees in all axis will look like this - (45, 45, 45)
