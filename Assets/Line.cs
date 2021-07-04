@@ -24,6 +24,11 @@ public class Line
 
     public float IntersectAt(Line l)
     {
+        // In case the lines are parallel, which the means the dot product is zero, return 't' time as not a number
+        if ((HolisticMath.Dot(Coords.Perp(l.v), v) == 0))
+        {
+            return float.NaN;
+        }
         Coords c = l.A - this.A;
         float t = HolisticMath.Dot(Coords.Perp(l.v), c) / HolisticMath.Dot(Coords.Perp(l.v), v);
         return t;
