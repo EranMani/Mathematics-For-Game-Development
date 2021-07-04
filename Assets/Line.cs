@@ -22,6 +22,14 @@ public class Line
         v = new Coords(B.x - A.x, B.y - A.y, B.z - A.z);
     }
 
+    public Line(Coords _A, Coords _v)
+    {
+        A = _A;
+        B = _A + _v;
+        v = _v;
+        type = LINETYPE.SEGMENT;
+    }
+
     public float IntersectAt(Line l)
     {
         // In case the lines are parallel, which the means the dot product is zero, return 't' time as not a number
@@ -31,14 +39,13 @@ public class Line
         }
         Coords c = l.A - this.A;
         float t = HolisticMath.Dot(Coords.Perp(l.v), c) / HolisticMath.Dot(Coords.Perp(l.v), v);
+        // The only time we check the value of 't' between 0 to 1 is when we are dealing with line segments
+        // 't' time value below 0 or beyond 1 will be decalred as infinity lines
+        if ((t < 0 || t > 1) && type == LINETYPE.SEGMENT)
+        {
+            return float.NaN;
+        }
         return t;
-    }
-
-    public Line(Coords _A, Coords _v)
-    {
-        A = _A;
-        B = _A + _v;
-        v = _v;
     }
 
     public void Draw(float width, Color color)
