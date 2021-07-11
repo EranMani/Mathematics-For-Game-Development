@@ -37,6 +37,7 @@ public class Line
         Coords vectorNorm = v.GetNormal();
 
         float dot = HolisticMath.Dot(norm, vectorNorm);
+        if (dot == 0) { return v; }
 
         float vn2 = dot * 2;
         Coords r = vectorNorm - norm * vn2;
