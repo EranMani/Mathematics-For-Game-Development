@@ -33,6 +33,16 @@ public class CreateWall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       ball.transform.position = trajectory.Lerp(Time.time).ToVector();
+        if (Time.time <= 1)
+        {
+            // If the ball didnt reached the end of the line, which is a lerp value of 1, then keep going
+            ball.transform.position = trajectory.Lerp(Time.time).ToVector();
+        }
+        else
+        {
+            // Find the normal of a 2D line by using the perp vector
+            ball.transform.position += trajectory.Reflect(Coords.Perp(wall.v)).ToVector() * Time.deltaTime * 5;
+        }
+       
     }
 }

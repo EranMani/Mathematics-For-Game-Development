@@ -27,7 +27,21 @@ public class Line
         type = LINETYPE.SEGMENT;
     }
 
+    public Coords Reflect(Coords normal)
+    {
+        // r = a - 2(a.n)n ->
+        // 'r' is the reflection vector
+        // 'a' is the incoming vector or line
+        // 'n' is the line normal
+        Coords norm = normal.GetNormal();
+        Coords vectorNorm = v.GetNormal();
 
+        float dot = HolisticMath.Dot(norm, vectorNorm);
+
+        float vn2 = dot * 2;
+        Coords r = vectorNorm - norm * vn2;
+        return r;
+    }
 
     public float IntersectsAt(Plane p)
     {
